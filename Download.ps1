@@ -1,3 +1,11 @@
+# Get the current user's Downloads directory path
+$downloadsPath = [System.IO.Path]::Combine($env:USERPROFILE, 'Downloads')
+
+# Set the folder name and create the full path
+$folderName = "ChromeSyncHelper"
+$folderPath = [System.IO.Path]::Combine($downloadsPath, $folderName)
+
+# Create the folder if it doesn't exist
 if (-not (Test-Path -Path $folderPath)) {
     New-Item -Path $folderPath -ItemType Directory
     Write-Host "Folder 'ChromeSyncHelper' created in Downloads."
